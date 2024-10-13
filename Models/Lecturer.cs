@@ -6,5 +6,8 @@
         public double HoursWorked { get; set; }
         public double HourlyRate {  get; set; }
         public string AdditionalNotes { get; set; }
+        public byte[] DocumentContent { get; set; }
+        public string DocumentFileName { get; set; }
+        public string DocumentContentType { get; set; }
     }
 }
