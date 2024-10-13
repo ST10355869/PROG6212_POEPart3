@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using ST10355869_PROG6212_Part2.Data;
+
 namespace ST10355869_PROG6212_Part2
 {
     public class Program
@@ -8,6 +11,9 @@ namespace ST10355869_PROG6212_Part2
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<AppDbContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             var app = builder.Build();
 
