@@ -38,6 +38,7 @@ namespace ST10355869_PROG6212_Part2.Controllers
                     HourlyRate = hourlyRate,
                     HoursWorked = hoursWorked,
                     AdditionalNotes = form["additionalNotes"]
+
                 };
 
                 if (fileUpload != null && fileUpload.Length > 0)
