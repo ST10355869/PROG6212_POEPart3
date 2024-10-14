@@ -8,7 +8,7 @@ namespace ST10355869_PROG6212_Part2.Data
 
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-        public DbSet<Lecturer> Lecturers { get; set; }
+        public DbSet<LecturerModel> Lecturers { get; set; }
 
     }
 }

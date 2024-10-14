@@ -80,11 +80,12 @@
 <body>
     <div class="claims-form">
         <h1>Submitting Monthly Claims</h1>
-        <form id="claims-form">
-            <input type="text" id="hourly-rates" name="hourlyRates" placeholder="Hourly rates:" required><br>
-            <input type="text" id="hours-done" name="hoursDone" placeholder="Hours Done:" required><br>
+        <form asp-action="SubmitClaim" asp-controller="Home" method="post" enctype="multipart/form-data">
+            <input type="number" id="hourly-rates" name="hourlyRates" placeholder="Hourly rates:" step="0.01" required><br>
+            <input type="number" id="hours-done" name="hoursDone" placeholder="Hours Done:" step="0.01" required><br>
+            <textarea id="additional-notes" name="additionalNotes" placeholder="Additional notes"></textarea><br>
             <div class="file-upload">
-                <p>Upload supporting docuemnts here:</p>
+                <p>Upload supporting documents here:</p>
                 <label for="file-upload">Choose File</label>
                 <input type="file" id="file-upload" name="fileUpload">
                 <div class="file-name" id="file-name">No file chosen</div>
@@ -99,6 +100,5 @@
             document.getElementById('file-name').textContent = fileName;
         });
     </script>
-
 </body>
 </html>

@@ -1,4 +1,124 @@
-﻿@*
-*@
-@{
-}
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Claims System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            flex: 1;
+            width: 800px;
+            margin: auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+
+            .header{
+            text-align: center;
+            margin-bottom: 20px;
+            margin-top: 20px;
+         }
+
+
+
+        .claims-list, .details-section {
+            margin-bottom: 20px;
+        }
+
+            .claims-list h2, .details-section h2 {
+                margin-bottom: 10px;
+            }
+
+            .claims-list ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+                border: 1px solid #d1d1d1;
+                max-height: 150px;
+                overflow-y: auto;
+            }
+
+            .claims-list li {
+                padding: 10px;
+                border-bottom: 1px solid #d1d1d1;
+            }
+
+            .details-section input {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 10px;
+                border: 1px solid #d1d1d1;
+                border-radius: 4px;
+            }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+            .buttons button {
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+        .approve {
+            background-color: #6bc4ff;
+            color: white;
+        }
+
+        .cancel {
+            background-color: #ff8181;
+            color: white;
+        }
+
+        .footer {
+            background-color: #f1f1f1;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            position: relative;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+
+            <h1>Monthly Claims System</h1>
+        </div>
+        <div class="claims-list">
+            <h2>Outstanding Claims</h2>
+            <ul>
+                <li>Sample Item 1</li>
+                <li>Sample Item 2</li>
+                <li>Sample Item 3</li>
+                <li>Sample Item 4</li>
+                <li>Sample Item 5</li>
+            </ul>
+        </div>
+        <div class="details-section">
+            <h2>Details</h2>
+            <input type="text" placeholder="Details">
+        </div>
+        <div class="buttons">
+            <button class="approve">Approve Claim</button>
+            <button class="cancel">Cancel Claim</button>
+        </div>
+    </div>
+
+</body>
+</html>
