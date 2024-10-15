@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ST10355869_PROG6212_Part2.Models.LecturerModel>
+
+@{
+    ViewData["Title"] = "Claim Status";
+}
+
+<h2>Claim Status</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Hours Worked</th>
+            <th>Hourly Rate</th>
+            <th>Document</th>
+            <th>Claim Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.HoursWorked</td>
+                <td>@item.HourlyRate</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.DocumentFileName))
+                    {
+                        <span>@item.DocumentFileName</span>
+                    }
+                    else
+                    {
+                        <span>No document</span>
+                    }
+                </td>
+                <td>
+                    @* Add claim status here if you have one *@
+                    Not implemented
+                </td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    @Html.ActionLink("New Claim", "SubmitClaim")
+</p>

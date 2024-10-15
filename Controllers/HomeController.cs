@@ -66,6 +66,15 @@ namespace ST10355869_PROG6212_Part2.Controllers
             return View();
         }
 
+        public IActionResult ClaimStatus()
+        {
+            var claims = _context.Lecturers.ToList();
+            return View(claims);
+        }
+
+
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
