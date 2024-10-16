@@ -8,6 +8,6 @@
         public string? AdditionalNotes { get; set; }
          public byte[]? DocumentContent { get; set; }
         public string? DocumentFileName { get; set; }
-        public string ClaimStatus { get; set; } = "Pending";
+        public string ClaimStatus { get; set; } 
     }
 }
