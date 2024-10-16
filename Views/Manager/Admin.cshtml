@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ST10355869_PROG6212_Part2.Models.LecturerModel>
+
+@{
+    ViewData["Title"] = "Claim Status";
+}
+
+<h2>Claim Status</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Hours Worked</th>
+            <th>Hourly Rate</th>
+            <th>Document</th>
+            <th>Claim Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var lecturer in Model)
+        {
+            <tr>
+                <td>@lecturer.Id</td>
+                <td>@lecturer.HoursWorked</td>
+                <td>@lecturer.HourlyRate</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(lecturer.DocumentFileName))
+                    {
+                        <span>@lecturer.DocumentFileName</span>
+                    }
+                    else
+                    {
+                        <span>No document</span>
+                    }
+                </td>
+                <td>
+                    @lecturer.ClaimStatus
+                </td>
+                <td>
+                    @if (lecturer.ClaimStatus == "Pending")
+                    {
+                        <form method="post" asp-action="Admin" asp-route-id="@lecturer.Id">
+            <button type="submit" name="Approvebtn" class="btn btn-success">Approve</button>
+            <button type="submit" name="Rejectbtn" class="btn btn-danger">Reject</button>
+                        </form>
+                    }
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    @Html.ActionLink("New Claim", "SubmitClaim")
+</p>

@@ -14,20 +14,19 @@
             <th>Hourly Rate</th>
             <th>Document</th>
             <th>Claim Status</th>
-            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var lecturer in Model)
         {
             <tr>
-                <td>@item.Id</td>
-                <td>@item.HoursWorked</td>
-                <td>@item.HourlyRate</td>
+                <td>@lecturer.Id</td>
+                <td>@lecturer.HoursWorked</td>
+                <td>@lecturer.HourlyRate</td>
                 <td>
-                    @if (!string.IsNullOrEmpty(item.DocumentFileName))
+                    @if (!string.IsNullOrEmpty(lecturer.DocumentFileName))
                     {
-                        <span>@item.DocumentFileName</span>
+                        <span>@lecturer.DocumentFileName</span>
                     }
                     else
                     {
@@ -35,7 +34,9 @@
                     }
                 </td>
                 <td>
-                    @item.ClaimStatus</td>
+                    @lecturer.ClaimStatus
+                </td>
+                
 
             </tr>
         }
