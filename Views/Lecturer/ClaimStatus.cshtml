@@ -1,25 +1,65 @@
-﻿@model IEnumerable<ST10355869_PROG6212_Part2.Models.LecturerModel>
+﻿<style>
+    table {
+        border-collapse: collapse;
+        width: 150%; /* Table width */
+        border-color: seashell; /* Table border color */
+        background-color: aqua;
+    }
 
+    th, td {
+        border: 3px solid #ddd; /* Cell border style */
+        padding: 10px; /* Cell padding */
+    }
+
+    body {
+        background-color: #474747; 
+    }
+    
+    .status-pending {
+        background-color: #cfcfcf;
+    }
+
+    .status-approved {
+        background-color: #a5d4a2; 
+    }
+
+    .status-rejected {
+        background-color: #f0afaf; 
+    }
+    /* Styles for row headings to make them stand out against the background */
+    th {
+      
+        color: white;
+    }
+</style>
+
+@model IEnumerable<ST10355869_PROG6212_Part2.Models.LecturerModel>
 @{
     ViewData["Title"] = "Claim Status";
 }
 
 <h2>Claim Status</h2>
-
-<table class="table">
+<table class="table table-striped">
     <thead>
         <tr>
-            <th>Id</th>
-            <th>Hours Worked</th>
-            <th>Hourly Rate</th>
-            <th>Document</th>
-            <th>Claim Status</th>
+            <th>Id</th> <!-- Row Heading -->
+            <th>Hours Worked</th> <!-- Row Heading -->
+            <th>Hourly Rate</th> <!-- Row Heading -->
+            <th>Document</th> <!-- Row Heading -->
+            <th>Claim Status</th> <!-- Row Heading -->
         </tr>
     </thead>
     <tbody>
         @foreach (var lecturer in Model)
         {
-            <tr>
+            var statusClass = lecturer.ClaimStatus switch
+            {
+                "Pending" => "status-pending",
+                "Approved" => "status-approved",
+                "Rejected" => "status-rejected",
+                _ => ""
+            };
+            <tr class="@statusClass">
                 <td>@lecturer.Id</td>
                 <td>@lecturer.HoursWorked</td>
                 <td>@lecturer.HourlyRate</td>
@@ -33,16 +73,11 @@
                         <span>No document</span>
                     }
                 </td>
-                <td>
-                    @lecturer.ClaimStatus
-                </td>
-                
-
+                <td>@lecturer.ClaimStatus</td>
             </tr>
         }
     </tbody>
 </table>
-
 <p>
     @Html.ActionLink("New Claim", "SubmitClaim")
 </p>
