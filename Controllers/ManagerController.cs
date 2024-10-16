@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ST10355869_PROG6212_Part2.Data;
+using ST10355869_PROG6212_Part2.Models;
 
 namespace ST10355869_PROG6212_Part2.Controllers
 {
@@ -18,7 +19,7 @@ namespace ST10355869_PROG6212_Part2.Controllers
         public IActionResult Admin()
         {
             var claims = _context.Lecturers.ToList();
-            return View();
+            return View(claims);
         }
 
         [HttpPost]
@@ -39,7 +40,7 @@ namespace ST10355869_PROG6212_Part2.Controllers
             _context.Lecturers.Update(lecturer);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction(nameof(Index)); // Redirect to refresh the page
+            return RedirectToAction(nameof(Admin)); // Redirect to refresh the page
         }
     }
 }
