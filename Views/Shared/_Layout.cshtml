@@ -7,29 +7,44 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ST10355869_PROG6212_Part2.styles.css" asp-append-version="true" />
+    <style>
+        /* Header Styling */
+        header {
+            color: whitesmoke;
+            font-size: 18px;
+        }
+
+        .navbar {
+            background-color: #007bff !important; /* Header color */
+        }
+
+        .navbar-brand, .nav-link {
+            color: whitesmoke !important;
+        }
+
+        /* Page Background Styling */
+        body {
+            background-color: #f8f9fa; /* Off-white background */
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #151515;
+        }
+
+        .footer a {
+            color: whitesmoke;
+        }
+    </style>
 </head>
-<style>
-    header {
-        color: black;
-        font-size: 18px;
-    }
-
-    .navbar {
-        background-color: #151e63 !important;
-    }
-
-    .navbar-brand, .nav-link {
-        color: black !important;
-    }
-</style>
 <body>
-
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-blue box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ST10355869_PROG6212_Part2</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
@@ -48,13 +63,19 @@
             </div>
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - ST10355869_PROG6212_Part2
+        </div>
+    </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
