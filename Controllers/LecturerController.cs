@@ -42,6 +42,7 @@ namespace ST10355869_PROG6212_Part2.Controllers
                         await fileUpload.CopyToAsync(memoryStream);
                         lecturer.DocumentContent = memoryStream.ToArray();
                         lecturer.DocumentFileName = fileUpload.FileName;
+                        lecturer.DocumentFileType = fileUpload.ContentType;
 
                     }
                 }

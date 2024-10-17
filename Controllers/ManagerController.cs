@@ -28,6 +28,8 @@ namespace ST10355869_PROG6212_Part2.Controllers
             var lecturer = await _context.Lecturers.FindAsync(id);
             if (lecturer == null) return NotFound();
 
+            string fileType = lecturer.DocumentFileType ?? "N/A";
+
             if (form.ContainsKey("Approvebtn"))
             {
                 lecturer.ClaimStatus = "Approved";
