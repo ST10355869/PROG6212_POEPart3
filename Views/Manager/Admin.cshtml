@@ -3,10 +3,25 @@
 @{
     ViewData["Title"] = "Pending Claims";
 }
+<style>
+    body {
+        color: white;
+    }
+
+    table {
+        color: white;
+    }
+
+        table th, table td {
+            color: white;
+        }
+</style>
+
 
 <h2>Pending Claim</h2>
 
 <table class="table">
+ 
     <thead>
         <tr>
             <th>Id</th>
@@ -55,3 +70,4 @@
 <p>
     @Html.ActionLink("New Claim", "SubmitClaim")
 </p>
+

@@ -10,19 +10,22 @@
 </head>
 <style>
     header {
-        color: whitesmoke;
-        font-size: 18px; /* Optional: Adjust font size */
+        color: black;
+        font-size: 18px;
+    }
+
+    .navbar {
+        background-color: #151e63 !important;
     }
 
     .navbar-brand, .nav-link {
-        color: whitesmoke !important;
+        color: black !important;
     }
-
 </style>
 <body>
 
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-opacity-10 box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-blue box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ST10355869_PROG6212_Part2</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
@@ -33,9 +36,6 @@
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Lecturer" asp-action="SubmitClaim">Submit Claim</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Lecturer" asp-action="ClaimStatus">Claim Status</a>
@@ -54,16 +54,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - ST10355869_PROG6212_Part2 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-        <style>
-           body{
-                background-color: #151515;
-           }
-        </style>
-    </footer>
+    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

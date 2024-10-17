@@ -23,6 +23,7 @@ namespace ST10355869_PROG6212_Part2.Controllers
         [HttpPost]
         public async Task<IActionResult> SubmitClaim(IFormCollection form, IFormFile fileUpload)
         {
+
             if (double.TryParse(form["hourlyRates"], out double hourlyRate) &&
                 double.TryParse(form["hoursDone"], out double hoursWorked))
             {
@@ -37,6 +38,16 @@ namespace ST10355869_PROG6212_Part2.Controllers
 
                 if (fileUpload != null && fileUpload.Length > 0)
                 {
+                    var allowedExtensions = new[] { ".txt", ".docx", ".pdf" };
+                    var fileExtension = Path.GetExtension(fileUpload.FileName).ToLowerInvariant();
+
+                    if (!allowedExtensions.Contains(fileExtension))
+                    {
+                        ModelState.AddModelError("fileUpload", "Only .txt, .docx, and .pdf files are allowed.");
+                        return View(lecturer);
+                    }
+
+
                     using (var memoryStream = new MemoryStream())
                     {
                         await fileUpload.CopyToAsync(memoryStream);

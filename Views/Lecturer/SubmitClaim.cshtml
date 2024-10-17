@@ -81,13 +81,14 @@
     <div class="claims-form">
         <h1>Submitting Monthly Claims</h1>
         <form asp-action="SubmitClaim" asp-controller="Lecturer" method="post" enctype="multipart/form-data">
-            <input type="number" id="hourly-rates" name="hourlyRates" placeholder="Hourly rates:" step="0.01" required><br>
-            <input type="number" id="hours-done" name="hoursDone" placeholder="Hours Done:" step="0.01" required><br>
+
+            <input type="number" id="hourly-rates" name="hourlyRates" placeholder="Hourly rates:" step="0.5" required><br>
+            <input type="number" id="hours-done" name="hoursDone" placeholder="Hours Done:" step="0.5" required><br>
             <textarea id="additional-notes" name="additionalNotes" placeholder="Additional notes"></textarea><br>
             <div class="file-upload">
                 <p>Upload supporting documents here:</p>
                 <label for="file-upload">Choose File</label>
-                <input type="file" id="file-upload" name="fileUpload">
+                <input type="file" id="file-upload" name="fileUpload" accept=".txt,.docx,.pdf">
                 <div class="file-name" id="file-name">No file chosen</div>
             </div>
             <button type="submit">Submit Claim</button>
