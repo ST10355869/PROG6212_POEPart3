@@ -1,27 +1,33 @@
 ﻿@model IEnumerable<ST10355869_PROG6212_Part2.Models.LecturerModel>
-
 @{
     ViewData["Title"] = "Pending Claims";
 }
+
 <style>
-    body {
-        color: white;
-    }
-
     table {
-        color: white;
+        border-collapse: collapse;
+        width: 150%; /* Table width */
+        border-color: seashell; /* Table border color */
+        background-color: #d6d6d6;
     }
 
-        table th, table td {
-            color: white;
-        }
+    th, td {
+        border: 3px solid #ddd; /* Cell border style */
+        padding: 10px; /* Cell padding */
+    }
+
+    body {
+        background-color: #f0f0f0;
+    }
+
+    /* Styles for row headings to make them stand out against the background */
+    th {
+        color: black;
+    }
 </style>
 
-
 <h2>Pending Claim</h2>
-
 <table class="table">
- 
     <thead>
         <tr>
             <th>Id</th>
@@ -35,6 +41,7 @@
     <tbody>
         @foreach (var lecturer in Model)
         {
+           
             <tr>
                 <td>@lecturer.Id</td>
                 <td>@lecturer.HoursWorked</td>
@@ -56,18 +63,15 @@
                     @if (lecturer.ClaimStatus == "Pending")
                     {
                         <form method="post" asp-action="Admin" asp-route-id="@lecturer.Id">
-            <button type="submit" name="Approvebtn" class="btn btn-success">Approve</button>
-            <button type="submit" name="Rejectbtn" class="btn btn-danger">Reject</button>
+                            <button type="submit" name="Approvebtn" class="btn btn-success">Approve</button>
+                            <button type="submit" name="Rejectbtn" class="btn btn-danger">Reject</button>
                         </form>
                     }
                 </td>
-
             </tr>
         }
     </tbody>
 </table>
-
 <p>
     @Html.ActionLink("New Claim", "SubmitClaim")
 </p>
-
