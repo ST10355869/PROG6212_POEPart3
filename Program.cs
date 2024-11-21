@@ -8,6 +8,7 @@
 //https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-versions-1/models-data/displaying-a-table-of-database-data-cs
 //https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/working-with-sql?view=aspnetcore-8.0&tabs=visual-studio
 
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ST10355869_PROG6212_Part2.Data;
 
@@ -37,6 +38,8 @@ namespace ST10355869_PROG6212_Part2
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+           
 
             app.UseRouting();
 
