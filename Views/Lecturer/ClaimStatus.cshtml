@@ -45,6 +45,7 @@
             <th>Id</th> <!-- Row Heading -->
             <th>Hours Worked</th> <!-- Row Heading -->
             <th>Hourly Rate</th> <!-- Row Heading -->
+             <th>Total Payment</th>
             <th>Document</th> <!-- Row Heading -->
             <th>Claim Status</th> <!-- Row Heading -->
         </tr>
@@ -63,6 +64,7 @@
                 <td>@lecturer.Id</td>
                 <td>@lecturer.HoursWorked</td>
                 <td>@lecturer.HourlyRate</td>
+                <td>@lecturer.finalPayment</td>
                 <td>
                     @if (!string.IsNullOrEmpty(lecturer.DocumentFileName))
                     {

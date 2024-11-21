@@ -33,6 +33,7 @@
             <th>Id</th>
             <th>Hours Worked</th>
             <th>Hourly Rate</th>
+              <th>Total Payment</th>
             <th>Document</th>
             <th>Claim Status</th>
             <th>Actions</th>
@@ -46,6 +47,7 @@
                 <td>@lecturer.Id</td>
                 <td>@lecturer.HoursWorked</td>
                 <td>@lecturer.HourlyRate</td>
+                <td>@lecturer.finalPayment</td>
                 <td>
                     @if (!string.IsNullOrEmpty(lecturer.DocumentFileName))
                     {
