@@ -26,12 +26,13 @@ namespace ST10355869_PROG6212_Part2.Data
             var adminUser = new IdentityUser
             {
                 UserName = "manager1",
-                Email = "manager1@example.com"
+                Email = "manager@example.com",
+                EmailConfirmed = true // Confirm the email
             };
 
             if (userManager.Users.All(u => u.UserName != adminUser.UserName))
             {
-                var result = await userManager.CreateAsync(adminUser, "Admin@123");
+                var result = await userManager.CreateAsync(adminUser, "Manager@123");
                 if (result.Succeeded)
                 {
                     await userManager.AddToRoleAsync(adminUser, "Admin");
@@ -41,7 +42,8 @@ namespace ST10355869_PROG6212_Part2.Data
             var normalUser = new IdentityUser
             {
                 UserName = "user",
-                Email = "user@example.com"
+                Email = "user@example.com",
+                EmailConfirmed = true // Confirm the email
             };
 
             if (userManager.Users.All(u => u.UserName != normalUser.UserName))
