@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 
 namespace ST10355869_PROG6212_Part2.Controllers
 {
+
     public class AccountController : Controller
     {
         private readonly SignInManager<IdentityUser> _signInManager;
