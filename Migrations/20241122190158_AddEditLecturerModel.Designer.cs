@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ST10355869_PROG6212_Part2.Data;
 
@@ -11,9 +12,11 @@ using ST10355869_PROG6212_Part2.Data;
 namespace ST10355869_PROG6212_Part2.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241122190158_AddEditLecturerModel")]
+    partial class AddEditLecturerModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -246,7 +249,7 @@ namespace ST10355869_PROG6212_Part2.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("EditLecturerModels");
+                    b.ToTable("editLecturerModels");
                 });
 
             modelBuilder.Entity("ST10355869_PROG6212_Part2.Models.LecturerModel", b =>

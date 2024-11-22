@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using ST10355869_PROG6212_Part2.Data;
 using ST10355869_PROG6212_Part2.Services;
 
@@ -17,6 +18,9 @@ namespace ST10355869_PROG6212_Part2
 
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            builder.Services.AddDbContext<AppDbContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             builder.Services.AddScoped<ReportService>();
             builder.Services.AddScoped<EditLecturer>();
