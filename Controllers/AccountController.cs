@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 
 namespace ST10355869_PROG6212_Part2.Controllers
 {
-
     public class AccountController : Controller
     {
         private readonly SignInManager<IdentityUser> _signInManager;
@@ -31,7 +30,14 @@ namespace ST10355869_PROG6212_Part2.Controllers
                 var result = await _signInManager.PasswordSignInAsync(user.UserName, password, false, false);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("SubmitClaim", "lecturer");
+                    if (await _userManager.IsInRoleAsync(user, "Admin"))
+                    {
+                        return RedirectToAction("Admin", "Manager");
+                    }
+                    else
+                    {
+                        return RedirectToAction("SubmitClaim", "Lecturer");
+                    }
                 }
             }
 
