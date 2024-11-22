@@ -43,32 +43,35 @@
             <a class="navbar-brand" href="/">MyApp</a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
-                    </li>
+                    
 
                     @if (User.Identity.IsAuthenticated)
                     {
                         if (User.IsInRole("User"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link" href="/Claims/List">Claims List</a>
+                                <a class="nav-link" href="/Lecturer/SubmitClaim">Submit Claim</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/Claims/Submit">Submit Claim</a>
+                                <a class="nav-link" href="/Lecturer/ClaimStatus">Claims List</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Lecturer/ClaimStatus">Claims List</a>
+                            </li>
+                            
                         }
                         if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link" href="/Admin">Admin Page</a>
+                                <a class="nav-link" href="/Manager/Admin">Admin Page</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/Claims/List">Claims List</a>
+                                <a class="nav-link" href="/Lecturer/SubmitClaim">Submit Claim</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/Claims/Submit">Submit Claim</a>
+                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
                             </li>
+                            
                         }
                     }
                 </ul>

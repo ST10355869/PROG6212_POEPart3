@@ -33,7 +33,7 @@ namespace ST10355869_PROG6212_Part2.Controllers
                     var result = await _signInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe, lockoutOnFailure: false);
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("SubmitClaim", "Lecturer");
                     }
                     else if (result.IsLockedOut)
                     {
