@@ -23,7 +23,9 @@ namespace ST10355869_PROG6212_Part2.Controllers
 
             foreach (var claim in claims)
             {
-                if (claim.HoursWorked >= 1 && claim.HoursWorked <= 50 && claim.HourlyRate >= 1 && claim.HourlyRate <= 100)
+                if (claim.HoursWorked >= 1 && claim.HoursWorked <= 50 
+                    && claim.HourlyRate >= 1 && claim.HourlyRate <= 100 
+                    && (claim.HoursWorked * claim.HourlyRate) <= 5000)
                 {
                     claim.ClaimStatus = "Approved";
                 }

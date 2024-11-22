@@ -114,14 +114,20 @@
             margin-top: 10px;
             font-size: 14px;
         }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
-   
+
     <div class="claims-form-container">
         <div class="claims-form">
             <h1>Submitting Monthly Claims</h1>
-            <form asp-action="SubmitClaim" asp-controller="Lecturer" method="post" enctype="multipart/form-data">
+            <form asp-action="SubmitClaim" asp-controller="Lecturer" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
                 <input type="number" id="hourly-rates" name="hourlyRates" placeholder="Hourly rates:" step="0.5" required><br>
                 <input type="number" id="hours-done" name="hoursDone" placeholder="Hours Done:" step="0.5" required><br>
                 <textarea id="additional-notes" name="additionalNotes" placeholder="Additional notes"></textarea><br>
@@ -131,6 +137,7 @@
                     <input type="file" id="file-upload" name="fileUpload" accept=".txt,.docx,.pdf">
                     <div class="file-name" id="file-name">No file chosen</div>
                 </div>
+                <div class="error-message" id="error-message"></div>
                 <button type="submit">Submit Claim</button>
             </form>
         </div>
@@ -140,6 +147,25 @@
             var fileName = this.files[0] ? this.files[0].name : 'No file chosen';
             document.getElementById('file-name').textContent = fileName;
         });
+
+        function validateForm() {
+            var hourlyRates = document.getElementById('hourly-rates').value;
+            var hoursDone = document.getElementById('hours-done').value;
+            var fileUpload = document.getElementById('file-upload').files[0];
+            var errorMessage = document.getElementById('error-message');
+
+            if (hourlyRates <= 0 || hoursDone <= 0) {
+                errorMessage.textContent = "Hourly rates and hours done must be greater than 0.";
+                return false;
+            }
+
+            if (fileUpload && fileUpload.size > 10 * 1024 * 1024) { // 10 MB
+                errorMessage.textContent = "File size must be less than 10 MB.";
+                return false;
+            }
+
+            return true;
+        }
     </script>
 </body>
 </html>
