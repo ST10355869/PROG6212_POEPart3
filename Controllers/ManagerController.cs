@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using ST10355869_PROG6212_Part2.Data;
 using ST10355869_PROG6212_Part2.Models;
+using ST10355869_PROG6212_Part2.Services;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,11 +11,18 @@ namespace ST10355869_PROG6212_Part2.Controllers
     public class ManagerController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly ReportService _reportService;
 
-        public ManagerController(AppDbContext context)
+        public ManagerController(AppDbContext context, ReportService reportService)
         {
             _context = context;
-
+            _reportService = reportService;
+        }
+        [HttpGet]
+        public async Task<IActionResult> GenerateReport()
+        {
+            var reportBytes = await _reportService.GenerateApprovedClaimsReport();
+            return File(reportBytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "ApprovedClaimsReport.xlsx");
         }
 
         [HttpGet]

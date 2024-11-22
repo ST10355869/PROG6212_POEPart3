@@ -20,6 +20,8 @@ namespace ST10355869_PROG6212_Part2.Services
 
         public async Task<byte[]> GenerateApprovedClaimsReport()
         {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
             var approvedClaims = await _context.Lecturers
                 .Where(l => l.ClaimStatus == "Approved")
                 .ToListAsync();
