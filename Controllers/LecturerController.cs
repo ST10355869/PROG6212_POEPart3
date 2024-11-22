@@ -3,9 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using ST10355869_PROG6212_Part2.Data;
 using ST10355869_PROG6212_Part2.Models;
 using ST10355869_PROG6212_Part2.Controllers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ST10355869_PROG6212_Part2.Controllers
 {
+    [Authorize(Roles = "User,Admin")]
     public class LecturerController : Controller
     {
         private readonly AppDbContext _context;

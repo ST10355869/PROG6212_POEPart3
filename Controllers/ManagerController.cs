@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ST10355869_PROG6212_Part2.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class ManagerController : Controller
     {
         private readonly AppDbContext _context;
