@@ -39,11 +39,20 @@ namespace ST10355869_PROG6212_Part2.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _editLecturerService.UpdateAsync(lecturer);
-                return RedirectToAction(nameof(Admin));
+                try
+                {
+                    await _editLecturerService.UpdateAsync(lecturer);
+                    TempData["SuccessMessage"] = "Lecturer details updated successfully!";
+                    return RedirectToAction(nameof(Admin)); // Redirect to Admin page or another suitable page
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "An error occurred while updating the lecturer.");
+                }
             }
             return View(lecturer);
         }
+
 
 
 

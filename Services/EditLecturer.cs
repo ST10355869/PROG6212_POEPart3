@@ -1,45 +1,71 @@
 ﻿using ST10355869_PROG6212_Part2.Models;
+using ST10355869_PROG6212_Part2.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace ST10355869_PROG6212_Part2.Services
 {
     public class EditLecturer
     {
-        private readonly List<EditLecturerModel> _testLecturers;
+        private readonly AppDbContext _context;
 
-        public EditLecturer()
+        public EditLecturer(AppDbContext context)
         {
-            // Initialize with some test data
-            _testLecturers = new List<EditLecturerModel>
-            {
-                new EditLecturerModel { Id = 1, Name = "John", Surname = "Doe", Address = "123 Main St", ContactNumber = "555-1234" },
-            };
+            _context = context;
         }
 
+        // Get all lecturers for editing
         public Task<List<EditLecturerModel>> GetAllAsync()
         {
-            return Task.FromResult(_testLecturers);
+            return _context.EditLecturerModels.ToListAsync(); // This fetches from the EditLecturerModels table
         }
 
+        // Get a lecturer by ID for editing
         public Task<EditLecturerModel> GetByIdAsync(int id)
         {
-            var lecturer = _testLecturers.FirstOrDefault(l => l.Id == id);
-            return Task.FromResult(lecturer);
+            return _context.EditLecturerModels
+                .Where(l => l.Id == id)
+                .FirstOrDefaultAsync();
         }
 
-        public Task UpdateAsync(EditLecturerModel updatedLecturer)
+        // Update lecturer data in the EditLecturerModels table
+        public async Task UpdateAsync(EditLecturerModel updatedLecturer)
         {
-            var lecturer = _testLecturers.FirstOrDefault(l => l.Id == updatedLecturer.Id);
+            var lecturer = await _context.EditLecturerModels.FindAsync(updatedLecturer.Id);
             if (lecturer != null)
             {
                 lecturer.Name = updatedLecturer.Name;
                 lecturer.Surname = updatedLecturer.Surname;
                 lecturer.Address = updatedLecturer.Address;
                 lecturer.ContactNumber = updatedLecturer.ContactNumber;
+
+                _context.EditLecturerModels.Update(lecturer);
+                await _context.SaveChangesAsync();
             }
-            return Task.CompletedTask;
+        }
+
+        // Add a new lecturer to the EditLecturerModels table
+        public async Task AddAsync(EditLecturerModel newLecturer)
+        {
+            _context.EditLecturerModels.Add(newLecturer);
+            await _context.SaveChangesAsync();
+        }
+
+        // Seed initial data to the EditLecturerModels table
+        public async Task SeedEditLecturerModelsAsync()
+        {
+            if (!_context.EditLecturerModels.Any())
+            {
+                var initialLecturers = new List<EditLecturerModel>
+                {
+                    new EditLecturerModel {Name = "John", Surname = "Doe", Address = "123 Main St", ContactNumber = "555-1234" },
+                };
+
+                _context.EditLecturerModels.AddRange(initialLecturers);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }

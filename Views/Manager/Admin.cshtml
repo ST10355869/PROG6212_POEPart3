@@ -25,7 +25,12 @@
         color: black;
     }
 </style>
-
+@if (TempData["SuccessMessage"] != null)
+{
+        <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+        </div>
+}
 <h2>Pending Claim</h2>
 <table class="table">
     <thead>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using ST10355869_PROG6212_Part2.Services;
 
 namespace ST10355869_PROG6212_Part2.Data
 {
@@ -8,6 +9,8 @@ namespace ST10355869_PROG6212_Part2.Data
         {
             var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
+            var editLecturerService = serviceProvider.GetRequiredService<EditLecturer>();
+
 
             string[] roles = { "Admin", "User" };
 
@@ -50,6 +53,12 @@ namespace ST10355869_PROG6212_Part2.Data
                     await userManager.AddToRoleAsync(normalUser, "User");
                 }
             }
+
+
+            await editLecturerService.SeedEditLecturerModelsAsync();
+
+
         }
+
     }
 }
