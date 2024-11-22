@@ -26,7 +26,7 @@ namespace ST10355869_PROG6212_Part2
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+       options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             builder.Services.AddScoped<ReportService>();
 
