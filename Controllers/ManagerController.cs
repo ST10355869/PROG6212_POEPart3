@@ -15,12 +15,38 @@ namespace ST10355869_PROG6212_Part2.Controllers
     {
         private readonly AppDbContext _context;
         private readonly ReportService _reportService;
+        private readonly EditLecturer _editLecturerService;
 
-        public ManagerController(AppDbContext context, ReportService reportService)
+        public ManagerController(AppDbContext context, ReportService reportService, EditLecturer editLecturerService)
         {
             _context = context;
             _reportService = reportService;
+            _editLecturerService = editLecturerService;
         }
+        [HttpGet]
+        public async Task<IActionResult> EditLecturer(int id)
+        {
+            var lecturer = await _editLecturerService.GetByIdAsync(id);
+            if (lecturer == null)
+            {
+                return NotFound();
+            }
+            return View(lecturer);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditLecturer(EditLecturerModel lecturer)
+        {
+            if (ModelState.IsValid)
+            {
+                await _editLecturerService.UpdateAsync(lecturer);
+                return RedirectToAction(nameof(Admin));
+            }
+            return View(lecturer);
+        }
+
+
+
         [HttpGet]
         public async Task<IActionResult> GenerateReport()
         {

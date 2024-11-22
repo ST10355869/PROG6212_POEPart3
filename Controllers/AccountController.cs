@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using ST10355869_PROG6212_Part2.Models;
 using System.Threading.Tasks;
 
 namespace ST10355869_PROG6212_Part2.Controllers
@@ -23,49 +22,28 @@ namespace ST10355869_PROG6212_Part2.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginModel model)
+        public async Task<IActionResult> Login(string email, string password)
         {
-            if (ModelState.IsValid)
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user != null)
             {
-                var user = await _userManager.FindByEmailAsync(model.Email);
-                if (user != null)
+                var result = await _signInManager.PasswordSignInAsync(user.UserName, password, false, false);
+                if (result.Succeeded)
                 {
-                    var result = await _signInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe, lockoutOnFailure: false);
-                    if (result.Succeeded)
-                    {
-                        return RedirectToAction("SubmitClaim", "Lecturer");
-                    }
-                    else if (result.IsLockedOut)
-                    {
-                        ModelState.AddModelError(string.Empty, "Account locked out.");
-                    }
-                    else
-                    {
-                        ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    }
-                }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "User not found.");
+                    return RedirectToAction("SubmitClaim", "lecturer");
                 }
             }
-            return View(model);
+
+            ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+            return View();
         }
-        [HttpGet]
-        public IActionResult LogoutConfirmation()
-        {
-            return View("Logout");
-        }
+
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("SubmitClaim", "Lecturer");
-        }
-
-        public IActionResult AccessDenied()
-        {
-            return View();
+            return RedirectToAction("Login", "Account");
         }
     }
 }

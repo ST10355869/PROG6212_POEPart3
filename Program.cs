@@ -1,13 +1,3 @@
-// Kevin Muller
-// ST10355869
-// Gr 1
-
-// References
-//https://htmlcolorcodes.com/
-//https://learn.microsoft.com/en-us/aspnet/core/mvc/controllers/testing?view=aspnetcore-8.0
-//https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-versions-1/models-data/displaying-a-table-of-database-data-cs
-//https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/working-with-sql?view=aspnetcore-8.0&tabs=visual-studio
-
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
@@ -26,9 +16,10 @@ namespace ST10355869_PROG6212_Part2
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             builder.Services.AddScoped<ReportService>();
+            builder.Services.AddScoped<EditLecturer>();
 
             // Add Identity services
             builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
@@ -48,7 +39,6 @@ namespace ST10355869_PROG6212_Part2
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Account/Login");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 

@@ -5,58 +5,58 @@
 namespace ST10355869_PROG6212_Part2.Migrations
 {
     /// <inheritdoc />
-    public partial class AddedDetailstoLogin : Migration
+    public partial class backToNormal : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
+            migrationBuilder.DropColumn(
                 name: "Address",
-                table: "Lecturers",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
+                table: "Lecturers");
 
-            migrationBuilder.AddColumn<string>(
+            migrationBuilder.DropColumn(
                 name: "Name",
-                table: "Lecturers",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
+                table: "Lecturers");
 
-            migrationBuilder.AddColumn<string>(
+            migrationBuilder.DropColumn(
                 name: "PhoneNumber",
-                table: "Lecturers",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
+                table: "Lecturers");
 
-            migrationBuilder.AddColumn<string>(
+            migrationBuilder.DropColumn(
                 name: "Surname",
-                table: "Lecturers",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
+                table: "Lecturers");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
+            migrationBuilder.AddColumn<string>(
                 name: "Address",
-                table: "Lecturers");
+                table: "Lecturers",
+                type: "nvarchar(max)",
+                nullable: false,
+                defaultValue: "");
 
-            migrationBuilder.DropColumn(
+            migrationBuilder.AddColumn<string>(
                 name: "Name",
-                table: "Lecturers");
+                table: "Lecturers",
+                type: "nvarchar(max)",
+                nullable: false,
+                defaultValue: "");
 
-            migrationBuilder.DropColumn(
+            migrationBuilder.AddColumn<string>(
                 name: "PhoneNumber",
-                table: "Lecturers");
+                table: "Lecturers",
+                type: "nvarchar(max)",
+                nullable: false,
+                defaultValue: "");
 
-            migrationBuilder.DropColumn(
+            migrationBuilder.AddColumn<string>(
                 name: "Surname",
-                table: "Lecturers");
+                table: "Lecturers",
+                type: "nvarchar(max)",
+                nullable: false,
+                defaultValue: "");
         }
     }
 }

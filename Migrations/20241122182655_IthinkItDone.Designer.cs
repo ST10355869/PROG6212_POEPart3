@@ -12,8 +12,8 @@ using ST10355869_PROG6212_Part2.Data;
 namespace ST10355869_PROG6212_Part2.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241122174611_AddedDetailstoLogin")]
-    partial class AddedDetailstoLogin
+    [Migration("20241122182655_IthinkItDone")]
+    partial class IthinkItDone
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -234,10 +234,6 @@ namespace ST10355869_PROG6212_Part2.Migrations
                     b.Property<string>("AdditionalNotes")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("ClaimStatus")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -256,18 +252,6 @@ namespace ST10355869_PROG6212_Part2.Migrations
 
                     b.Property<double>("HoursWorked")
                         .HasColumnType("float");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Surname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("finalPayment")
                         .HasColumnType("float");

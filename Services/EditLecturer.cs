@@ -1,34 +1,45 @@
 ﻿using ST10355869_PROG6212_Part2.Models;
-using ST10355869_PROG6212_Part2.Data;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace ST10355869_PROG6212_Part2.Services
 {
     public class EditLecturer
     {
-        private readonly AppDbContext _context;
+        private readonly List<EditLecturerModel> _testLecturers;
 
-        public EditLecturer(AppDbContext context)
+        public EditLecturer()
         {
-            _context = context;
-        }
-
-        public LecturerModel GetLecturerById(int id)
-        {
-            return _context.Lecturers.FirstOrDefault(l => l.Id == id);
-        }
-
-        public void UpdateLecturer(LecturerModel lecturer)
-        {
-            var existingLecturer = _context.Lecturers.FirstOrDefault(l => l.Id == lecturer.Id);
-            if (existingLecturer != null)
+            // Initialize with some test data
+            _testLecturers = new List<EditLecturerModel>
             {
-                existingLecturer.Name = lecturer.Name;
-                existingLecturer.Surname = lecturer.Surname;
-                existingLecturer.Address = lecturer.Address;
-                existingLecturer.PhoneNumber = lecturer.PhoneNumber;
-                _context.SaveChanges();
+                new EditLecturerModel { Id = 1, Name = "John", Surname = "Doe", Address = "123 Main St", ContactNumber = "555-1234" },
+            };
+        }
+
+        public Task<List<EditLecturerModel>> GetAllAsync()
+        {
+            return Task.FromResult(_testLecturers);
+        }
+
+        public Task<EditLecturerModel> GetByIdAsync(int id)
+        {
+            var lecturer = _testLecturers.FirstOrDefault(l => l.Id == id);
+            return Task.FromResult(lecturer);
+        }
+
+        public Task UpdateAsync(EditLecturerModel updatedLecturer)
+        {
+            var lecturer = _testLecturers.FirstOrDefault(l => l.Id == updatedLecturer.Id);
+            if (lecturer != null)
+            {
+                lecturer.Name = updatedLecturer.Name;
+                lecturer.Surname = updatedLecturer.Surname;
+                lecturer.Address = updatedLecturer.Address;
+                lecturer.ContactNumber = updatedLecturer.ContactNumber;
             }
+            return Task.CompletedTask;
         }
     }
 }
