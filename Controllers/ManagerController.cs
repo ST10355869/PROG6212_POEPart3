@@ -3,11 +3,14 @@ using Microsoft.EntityFrameworkCore;
 using ST10355869_PROG6212_Part2.Data;
 using ST10355869_PROG6212_Part2.Models;
 using ST10355869_PROG6212_Part2.Services;
+
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ST10355869_PROG6212_Part2.Controllers
 {
+    [Authorize]
     public class ManagerController : Controller
     {
         private readonly AppDbContext _context;
