@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Security.Cryptography.Pkcs;
 
 namespace ST10355869_PROG6212_Part2.Models
 {
@@ -14,5 +15,7 @@ namespace ST10355869_PROG6212_Part2.Models
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+
+        
     }
 }

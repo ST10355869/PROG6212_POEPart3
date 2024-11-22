@@ -1,13 +1,14 @@
 ﻿using ST10355869_PROG6212_Part2.Models;
+using ST10355869_PROG6212_Part2.Data;
 using System.Linq;
 
 namespace ST10355869_PROG6212_Part2.Services
 {
     public class EditLecturer
     {
-        private readonly ApplicationDbContext _context;
+        private readonly AppDbContext _context;
 
-        public EditLecturer(ApplicationDbContext context)
+        public EditLecturer(AppDbContext context)
         {
             _context = context;
         }
@@ -23,7 +24,9 @@ namespace ST10355869_PROG6212_Part2.Services
             if (existingLecturer != null)
             {
                 existingLecturer.Name = lecturer.Name;
-                existingLecturer.ContactInfo = lecturer.ContactInfo;
+                existingLecturer.Surname = lecturer.Surname;
+                existingLecturer.Address = lecturer.Address;
+                existingLecturer.PhoneNumber = lecturer.PhoneNumber;
                 _context.SaveChanges();
             }
         }
