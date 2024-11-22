@@ -10,21 +10,21 @@ namespace ST10355869_PROG6212_Part2.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Address",
-                table: "Lecturers");
+            //migrationBuilder.DropColumn(
+            //    name: "Address",
+            //    table: "Lecturers");
 
-            migrationBuilder.DropColumn(
-                name: "Name",
-                table: "Lecturers");
+            //migrationBuilder.DropColumn(
+            //    name: "Name",
+            //    table: "Lecturers");
 
-            migrationBuilder.DropColumn(
-                name: "PhoneNumber",
-                table: "Lecturers");
+            //migrationBuilder.DropColumn(
+            //    name: "PhoneNumber",
+            //    table: "Lecturers");
 
-            migrationBuilder.DropColumn(
-                name: "Surname",
-                table: "Lecturers");
+            //migrationBuilder.DropColumn(
+            //    name: "Surname",
+            //    table: "Lecturers");
         }
 
         /// <inheritdoc />
