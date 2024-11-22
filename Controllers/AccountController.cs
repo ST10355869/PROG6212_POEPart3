@@ -51,12 +51,16 @@ namespace ST10355869_PROG6212_Part2.Controllers
             }
             return View(model);
         }
-
+        [HttpGet]
+        public IActionResult LogoutConfirmation()
+        {
+            return View("Logout");
+        }
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("SubmitClaim", "Lecturer");
         }
 
         public IActionResult AccessDenied()
